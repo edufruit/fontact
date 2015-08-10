@@ -23,7 +23,7 @@
 	}
 }( this, document, function ( jQuery, window, document, undefined ) {
 (function( $ ) {
-	$.mobile = {};
+	$.mobile = {}; 
 }( jQuery ));
 
 /*!
