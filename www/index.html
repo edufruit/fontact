@@ -1,60 +1,34 @@
-<!DOCTYPE HTML> 
-    <html>
-    <head>
-    
-    <meta name="viewport" content="width=320; user-scalable=no" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>PhoneGap</title>
-    <script type="text/javascript" charset="utf-8" src="js/phonegap-1.3.0.js"></script>
-    
-    <script>
-    function init(){
-      document.addEventListener("deviceready", startup);
-    }
-
-    function startup(){
-      document.getElementById("searchButton").addEventListener("click", handleSearch);
-    }
-
-    function handleSearch(e){
-        var search = document.getElementById("name").value;
-        //What parts of the contact we will search
-        var fields = ["displayName", "name"];
-        //Options for the search
-        var options = new ContactFindOptions();
-        options.filter = search;
-        options.multiple = true;
-        document.getElementById("results").innerHTML="Searching...";
-        navigator.contacts.find(fields, contactSuccess, contactError, options);
-    }    
-
-    function contactError(e){
-    document.getElementById("results").innerHTML="";
-    navigator.notification.alert("Sorry, an error was thrown!");
-    }
-
-    function contactSuccess(results){
-    //No max, so we will default to only 10
-    var s = "";
-    for (var i = 0; i < Math.min(10, results.length); i++) {
-    s += "<p>"+results[i].displayName+"</p>";
-    }
-
-    document.getElementById("results").innerHTML=s;
-    }
-
-    </script>
-    </head>
-
-    <body onload="init()">
-
-    <h1>Contact Search</h1>
-
-  <form>
-      <input type="text" id="name"><br/>
-      <input type="button" id="searchButton" value="Search">
-      <div id="results"></div>
-  </form>
-
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<title>PhoneGap 3 Contacts API demo</title>
+</head>
+<body>
+<div data-role="page">
+<div data-role="header" data-position="fixed" data-theme="b" data-add-back-btn="true">
+<h1>PhoneGap 3 Contacts API</h1>
+</div>
+<div class="wrapper">
+<ul data-role="listview" data-inset="true">
+<li data-icon="plus"><a href="add.html">Add New Contact</a>
+</li>
+<li data-icon="search"><a href="find.html">Find Contact</a>
+</li>
+</ul>
+</div>
+<div data-role="footer" data-position="fixed">
+<h1>All Rights Reserved</h1>
+</div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
 </html>
