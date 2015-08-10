@@ -16,7 +16,8 @@
 
 <access origin="*"/>
 
-<!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
+<gap:platform name="android" />
+ 
 <content src="index.html" />
 <gap:plugin name="org.apache.cordova.contacts"/>
 <preference name="loglevel" value="DEBUG"/> 
